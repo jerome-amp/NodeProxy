@@ -14,8 +14,6 @@ const handler =
 		{
 			return (...args) =>
 			{
-				console.log(args);
-				
 				target.forEach(element =>
 				{
 					element[property].apply(element, args);
