@@ -1,4 +1,3 @@
-
 const $ = (selector, parent = document) =>
 {
 	let nodes = parent.querySelectorAll(selector);
