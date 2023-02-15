@@ -1,15 +1,15 @@
 const $ = (selector, parent = document) =>
 {
-	let nodes = parent.querySelectorAll(selector);
+	let nodes = parent ? parent.querySelectorAll(selector) : [];
 	
-	return nodes.length == 1 ? nodes[0] : new Proxy(nodes, handler);
+	return nodes.length > 1 ? new Proxy(nodes, handler) : nodes.length > 0 ? nodes[0] : null;
 }
 
 const handler =
 {
 	get(target, property, receiver)
 	{
-		if(typeof target[0][property] == 'function')
+		if(typeof target[0]?.[property] == 'function')
 		{
 			return (...args) =>
 			{
